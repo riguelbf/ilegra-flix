@@ -5,20 +5,27 @@ export const Container = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 0;
+  background-color: #17181b;
+  height: 4em;
+  margin-bottom: 30px;
 
   img {
-    margin: 1rem;
-    height: 4rem;
-    padding-right: 0.1rem;
+    top: 2rem;
+    margin: 2rem;
+    height: 5rem;
+    padding: 0.5rem;
+    transform: rotate(-20deg);
+    background-color: #17181b;
+    border-radius: 20%;
   }
 `;
 
-export const ProfileDetails = styled.div`
+export const ProfileDetails = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
   transition: opacity 0.2s;
+  color: #fff;
 
   &:hover {
     opacity: 0.7;
@@ -28,9 +35,9 @@ export const ProfileDetails = styled.div`
     display: flex;
     flex-direction:column;
     text-align: block;
-    margin-right: 10px;
+    margin-right: 30px;
 
-    strong: {
+    span:first-of-type {
       display: block;
       color: #ed2337;
     }
