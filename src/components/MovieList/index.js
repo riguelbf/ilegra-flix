@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Container } from './styles';
 
 import MovieItem from '../MovieItem';
 
-export default function MovieList(props) {
+function MovieList(props) {
   const { movies } = props;
 
   if (!movies || !movies.length) {
@@ -18,3 +19,9 @@ export default function MovieList(props) {
     </Container>
   );
 }
+
+MovieList.propsType = {
+  movies: PropTypes.arrayOf(PropTypes.shape({ coverImage: PropTypes.string })),
+};
+
+export default MovieList;
