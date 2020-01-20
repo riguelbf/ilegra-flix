@@ -5,23 +5,35 @@ import { Container } from './styles';
 import MovieItem from '../MovieItem';
 
 function MovieList(props) {
-  const { movies } = props;
+  const { groups } = props;
 
-  if (!movies || !movies.length) {
+  if (!groups || !groups.length) {
     return 'Do not exists movies for list';
   }
 
   return (
     <Container>
-      {movies.map((movie, index) => (
-        <MovieItem key={index} movieDetail={movie} />
+      {groups.map((group, groupIndex) => (
+        <div key={groupIndex}>
+          <h1>{group.name}</h1>
+          <div>
+            {group.movies.map((movie, index) => {
+              return <MovieItem key={index} movieDetail={movie} />;
+            })}
+          </div>
+        </div>
       ))}
     </Container>
   );
 }
 
 MovieList.propsType = {
-  movies: PropTypes.arrayOf(PropTypes.shape({ coverImage: PropTypes.string })),
+  groups: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      coverImage: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default MovieList;

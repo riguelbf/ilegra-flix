@@ -7,9 +7,7 @@ function MovieItem(props) {
   const { movieDetail } = props;
   return (
     <Container>
-      <div>
-        <img data-testid="cover-image" src={movieDetail.coverImage} />
-      </div>
+      <img data-testid="cover-image" src={movieDetail.coverImage} />
     </Container>
   );
 }

@@ -11,17 +11,23 @@ describe('MovieList component', () => {
   });
 
   test('should render a list of movies options', () => {
-    const fakeMovies = Array.of(
-      { coverImage: 'http://marvel.com/01' },
-      { coverImage: 'http://marvel.com/02' },
-      { coverImage: 'http://marvel.com/03' }
-    );
+    const fakeGroups = {
+      groups: [
+        {
+          name: 'NetFlix original',
+          movies: [
+            { coverImage: 'http://marvel.com/01' },
+            { coverImage: 'http://marvel.com/02' },
+            { coverImage: 'http://marvel.com/03' },
+          ],
+        },
+      ],
+    };
 
-    const { getAllByTestId } = render(<MovieList movies={fakeMovies} />);
+    const { getAllByTestId } = render(<MovieList groups={fakeGroups.groups} />);
 
     const movies = getAllByTestId('cover-image');
-    // console.log(movies)
 
-    expect(movies.length).toEqual(fakeMovies.length);
+    expect(movies.length).toEqual(fakeGroups.groups[0].movies.length);
   });
 });
