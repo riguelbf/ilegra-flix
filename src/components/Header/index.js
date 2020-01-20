@@ -15,7 +15,7 @@ export default function Header() {
       </Link>
       <NavBar />
       <ProfileDetails data-testid="profile-details" to="/profile">
-        <MdPortrait size={50} color="#ed2337;" />
+        <MdPortrait size={50} color="#ed2337" />
         <div>
           <span>User name</span>
           <span>2 items já assistidos</span>

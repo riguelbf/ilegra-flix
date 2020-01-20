@@ -17,6 +17,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
+    "test-debug": "react-scripts --inspect-brk test --env=jsdom --runInBand",
     "eject": "react-scripts eject"
   },
   "jest": {
