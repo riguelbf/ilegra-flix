@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import MovieList from '../../components/MovieList';
+import MovieList from '../../../components/MovieList';
 
 describe('MovieList component', () => {
   test('should render an message that have not movies for to list', () => {
