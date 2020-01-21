@@ -5,7 +5,6 @@ import { MemoryRouter } from 'react-router-dom';
 import NavBar from '../../../components/NavBar';
 
 describe('navbar component', () => {
-
   afterEach(cleanup);
 
   test('should render component with 3 options', () => {
@@ -30,9 +29,11 @@ describe('navbar component', () => {
   });
 
   test('should render just message that not exist options', () => {
+    const options = [];
+
     const { getByText } = render(
       <MemoryRouter>
-        <NavBar />
+        <NavBar options={options} />
       </MemoryRouter>
     );
     expect(getByText(/Do not exists menu options/i)).toBeInTheDocument();
