@@ -23,7 +23,9 @@
     "test-integration": "react-app-rewired test --env=jsdom --collectCoverageFrom=src/__tests__/integration/**/*.test.js",
     "test-debug": "react-scripts --inspect-brk test --env=jsdom --runInBand",
     "test-coverage": "react-app-rewired test --env=jsdom --coverage --collectCoverageFrom=src/**/*.js",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docker-build": "docker build -t ilegraflix:dev .",
+    "docker-run": "docker run -v ${PWD}:/app -v /app/node_modules -p 3001:3000 --rm ilegraflix:dev"
   },
   "jest": {
     "testMatch": [
