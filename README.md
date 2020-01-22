@@ -1,3 +1,10 @@
+## Build status:
+![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/riguelbf/ilegra-flix/master?style=for-the-badge)
+
+![CircleCI](https://img.shields.io/circleci/build/gh/riguelbf/ilegra-flix/master?style=for-the-badge)
+
+![GitHub All Releases](https://img.shields.io/github/downloads/riguelbf/ilegra-flix/total?style=for-the-badge)
+
 ## About this project
 
 This project is a simple clone from NetFlix, where the objective is training and show how I think about project implementation using React JS
@@ -56,6 +63,10 @@ Launches only the integration test runner in the interactive watch mode.<br />
 ### `yarn test-debug`
 
 If you some time have a problem during your tests, maybe it can be util for you, because this command give you a ability for inspect step by step what's happened <br />
+
+### `yarn test-coverage`
+
+For understand how is your code coverage about tests, this command can be util
 
 ### `yarn docker-build`
 
