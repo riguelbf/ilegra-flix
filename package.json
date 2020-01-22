@@ -20,7 +20,7 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "test-unit": "react-app-rewired test --env=jsdom --testPath=src/__tests__/unit/**/*.test.js",
-    "test-integration": "react-app-rewired test --env=jsdom --collectCoverageFrom=src/__tests__/integration/**/*.test.js",
+    "test-integration": "react-app-rewired test --env=jsdom --testPath=src/__tests__/integration/**/*.test.js",
     "test-debug": "react-scripts --inspect-brk test --env=jsdom --runInBand",
     "test-coverage": "react-app-rewired test --env=jsdom --coverage --collectCoverageFrom=src/**/*.js",
     "eject": "react-scripts eject",
