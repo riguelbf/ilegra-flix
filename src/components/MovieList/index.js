@@ -14,7 +14,7 @@ function MovieList(props) {
   return (
     <Container>
       {groups.map((group, groupIndex) => (
-        <div key={groupIndex}>
+        <div key={groupIndex} data-testid="movielist-group">
           <h1>{group.name}</h1>
           <div>
             {group.movies.map((movie, index) => {
