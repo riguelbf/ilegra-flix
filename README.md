@@ -1,4 +1,7 @@
 ## Build status:
+
+ **[CircleCI](https://circleci.com/gh/riguelbf/ilegra-flix)**
+
 ![GitHub package.json version (branch)](https://img.shields.io/github/package-json/v/riguelbf/ilegra-flix/master?style=for-the-badge)
 
 ![CircleCI](https://img.shields.io/circleci/build/gh/riguelbf/ilegra-flix/master?style=for-the-badge)
@@ -75,4 +78,3 @@ For have more control about your running environment this command, give for you 
 ### `yarn docker-run`
 
 This command is for running your project into docker image, but is necessary build an image before with command 'yarn docker-build' <br />
-
