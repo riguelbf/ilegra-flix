@@ -16,9 +16,9 @@ describe('MovieList component', () => {
         {
           name: 'NetFlix original',
           movies: [
-            { coverImage: 'http://marvel.com/01' },
-            { coverImage: 'http://marvel.com/02' },
-            { coverImage: 'http://marvel.com/03' },
+            { poster_path: 'http://marvel.com/01' },
+            { poster_path: 'http://marvel.com/02' },
+            { poster_path: 'http://marvel.com/03' },
           ],
         },
       ],
@@ -26,7 +26,7 @@ describe('MovieList component', () => {
 
     const { getAllByTestId } = render(<MovieList groups={fakeGroups.groups} />);
 
-    const movies = getAllByTestId('cover-image');
+    const movies = getAllByTestId('poster-path');
 
     expect(movies.length).toEqual(fakeGroups.groups[0].movies.length);
   });

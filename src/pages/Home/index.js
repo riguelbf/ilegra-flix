@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 
 import { Container } from './styles';
 import MovieList from '../../components/MovieList';
 import { MovieService } from '../../service/movieService';
 
 export default function Home() {
-  const [groups, setGroups] = useState({ groups: [] });
+  const [movies, setMovies] = useState({});
 
   async function fetchGroups() {
-    const groupsResult = await MovieService.getMovies();
-    setGroups(groupsResult);
+    const moviesResult = await MovieService.getMovies();
+    await setMovies(moviesResult);
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
    fetchGroups();
   }, []);
 
   return (
     <Container>
-      <MovieList groups={groups} />
+      <MovieList groups={movies.groups} />
     </Container>
   );
 }

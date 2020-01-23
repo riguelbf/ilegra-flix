@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { BASE_URL_IMAGES } from '../../config';
 import { Container } from './styles';
 
 function MovieItem(props) {
@@ -8,8 +8,8 @@ function MovieItem(props) {
   return (
     <Container>
       <img
-        data-testid="cover-image"
-        src={movieDetail.poster_path}
+        data-testid="poster-path"
+        src={`${BASE_URL_IMAGES}${movieDetail.poster_path}`}
         alt="Folder"
       />
     </Container>

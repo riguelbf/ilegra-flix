@@ -6,6 +6,7 @@ const API_KEY = '2590ac2e9a87fbfe0e649b19ae1b91c2';
 
 function resultToGroups(data) {
   const result = { groups: [] };
+
   if (!data || !data.results.length) {
     return result;
   }

@@ -22,6 +22,6 @@ describe('Movie service', () => {
 
     const moviesList = await MovieService.getMovies();
 
-    expect(moviesList.data.length > 0).toBe(true);
+    expect(moviesList.groups.length > 0).toBe(true);
   });
 });
