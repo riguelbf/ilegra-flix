@@ -5,7 +5,7 @@ import { Container } from './styles';
 import MovieItem from '../MovieItem';
 
 function MovieList(props) {
-  const { groups } = props;
+  const { groups, onShowModal } = props;
 
   if (!groups || !groups.length) {
     return 'Do not exists movies for list';
@@ -18,7 +18,13 @@ function MovieList(props) {
           <h1>{group.name}</h1>
           <div>
             {group.movies.map((movie, index) => {
-              return <MovieItem key={index} movieDetail={movie} />;
+              return (
+                <MovieItem
+                  key={index}
+                  movieDetail={movie}
+                  onShowModal={onShowModal}
+                />
+              );
             })}
           </div>
         </div>
@@ -34,6 +40,7 @@ MovieList.propsType = {
       coverImage: PropTypes.string.isRequired,
     })
   ),
+  onShowModal: PropTypes.func,
 };
 
 export default MovieList;

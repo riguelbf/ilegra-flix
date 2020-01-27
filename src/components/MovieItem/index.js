@@ -4,13 +4,14 @@ import { BASE_URL_IMAGES } from '../../config';
 import { Container } from './styles';
 
 function MovieItem(props) {
-  const { movieDetail } = props;
+  const { movieDetail, onShowModal } = props;
   return (
     <Container>
       <img
         data-testid="poster-path"
         src={`${BASE_URL_IMAGES}${movieDetail.poster_path}`}
         alt="Folder"
+        onClick={() => onShowModal()}
       />
     </Container>
   );

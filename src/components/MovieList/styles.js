@@ -5,16 +5,23 @@ export const Container = styled.div`
   flex-direction: column;
 
   h1 {
-    font-family: Arial,Helvetica,sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.5em;
     margin-left: 1rem;
     margin-top: 1.5rem;
+    width: -webkit-fill-available;
+    text-transform: uppercase;
   }
 
   div {
-    /* display: flex; */
-    margin-top: 5px;
-    margin-left: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 10px;
+    div {
+      margin-top: 10px;
+    }
   }
 `;
