@@ -1,37 +1,37 @@
-import React from 'react';
-import { FaPlus } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import faker from 'faker';
+import UserList from '../../components/UserList';
 
-import { Container, Body, Header } from './styles';
-
-const users = [
-  {
-    name: 'Huguinho',
-  },
-  {
-    name: 'Zézinho',
-  },
-  {
-    name: 'Luizinho',
-  },
-];
+import { userService } from '../../service/userService';
 
 export default function Login() {
+  const history = useHistory();
+  const [users, setUsers] = useState([]);
+
+  async function getUsers() {
+    const usersData = await userService.getUsers();
+    setUsers(usersData);
+  }
+
+  async function handleAddUser() {
+    const newUser = faker.name.findName();
+    setUsers([...users, newUser]);
+  }
+
+  function handleLogin(userName = '') {
+    history.push(`/?user=${userName}`);
+  }
+
+  useEffect(() => {
+    getUsers();
+  });
+
   return (
-    <Container>
-      <Header>Who's watching?</Header>
-      <Body>
-        {users.map(user => (
-          <div>
-            <span>{user.name}</span>
-          </div>
-        ))}
-        <div>
-          <button>
-            <FaPlus size={50} />
-          </button>
-          <span>Add user</span>
-        </div>
-      </Body>
-    </Container>
+    <UserList
+      handleLogin={handleLogin}
+      handleAddUser={handleAddUser}
+      users={users}
+    />
   );
 }

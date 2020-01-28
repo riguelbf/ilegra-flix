@@ -1,4 +1,5 @@
 import React, { useState, useLayoutEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { Container } from './styles';
 import ModalDetails from '../../components/ModalDetails';
@@ -6,6 +7,7 @@ import MovieList from '../../components/MovieList';
 import { MovieService } from '../../service/movieService';
 
 export default function Home() {
+  const location = useLocation();
   const [movies, setMovies] = useState({});
   const [className, setClassName] = useState('hide');
 

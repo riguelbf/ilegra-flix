@@ -1,8 +1,5 @@
 import MockAdapter from 'axios-mock-adapter';
-import {
-  repository,
-  LOCAL_STORAGE_KEY,
-} from '../../../repository/movieRepository';
+import { repository, LOCAL_STORAGE_KEY } from '../../../repository/repository';
 import { all } from '../../stubs/movies';
 import request from '../../../service/request';
 
