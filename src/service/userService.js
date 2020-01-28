@@ -16,4 +16,10 @@ export const userService = {
     const users = (await repository.getData().users) || fakeUsers;
     return users;
   },
+  async setCurrentUser(userOnSearch) {
+    const userName = userOnSearch.substr(6, userOnSearch.length);
+    const data = (await repository.getData()) || {};
+    data.currentUser = userName;
+    repository.setData(data);
+  },
 };

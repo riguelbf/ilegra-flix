@@ -3,9 +3,16 @@ import PropType from 'prop-types';
 import { FaPlay, FaPlus } from 'react-icons/fa';
 
 import { Container } from './styles';
+import { MovieService } from '../../service/movieService';
 
 function ModalDetails(props) {
   const { movieSelected, className, handleClose } = props;
+
+  function handlePlay() {
+    MovieService.addNewWatched(movieSelected);
+  }
+
+  function handleMyList(params) {}
 
   return (
     <Container backdropPath={movieSelected.backdrop_path}>
@@ -17,11 +24,11 @@ function ModalDetails(props) {
           <p>Popularity: {movieSelected.popularity}</p>
         </p>
         <p className="overview">{movieSelected.overview}</p>
-        <button className="btn-red">
+        <button className="btn-red" onClick={() => handlePlay()}>
           <FaPlay className="btn--icon" />
           <span>Play</span>
         </button>
-        <button className="btn">
+        <button className="btn" onClick={() => handleMyList()}>
           <FaPlus className="btn--icon" />
           <span>ADD My List</span>
         </button>

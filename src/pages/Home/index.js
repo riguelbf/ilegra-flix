@@ -1,11 +1,11 @@
 import React, { useState, useLayoutEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { MdSignalCellularConnectedNoInternet4Bar } from 'react-icons/md';
 import { Container } from './styles';
 import ModalDetails from '../../components/ModalDetails';
 import MovieList from '../../components/MovieList';
 import { MovieService } from '../../service/movieService';
+import { userService } from '../../service/userService';
 
 export default function Home() {
   const location = useLocation();
@@ -18,15 +18,18 @@ export default function Home() {
     await setMovies(moviesResult);
   }
 
+  async function handleCurrentUser() {
+    await userService.setCurrentUser(location.search);
+  }
   useLayoutEffect(() => {
     fetchGroups();
+    handleCurrentUser();
   }, []);
 
   async function handleModal(movieSelected) {
     const newClassName = className === 'hide' ? 'show' : 'hide';
     setMovieSelected(movieSelected);
-    await setClassName(newClassName);
-    console.log(movieSelected);
+    setClassName(newClassName);
   }
 
   return (

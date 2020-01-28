@@ -1,5 +1,6 @@
 import request from './request';
 import { onlyUnique } from '../utils/sort';
+import { repository } from '../repository/repository';
 
 // I know that it is not a good approach, but for simplify the development process
 const API_KEY = '2590ac2e9a87fbfe0e649b19ae1b91c2';
@@ -26,7 +27,7 @@ function resultToGroups(data) {
 }
 
 export const MovieService = {
- async getMovies() {
+  async getMovies() {
     const movies = await request
       .get(`/trending/all/week?api_key=${API_KEY}&language=en-US`)
       .then(data => {
@@ -36,6 +37,14 @@ export const MovieService = {
         throw new Error(err);
       });
 
+    const data = await repository.getData();
+    data.movies = movies;
+    repository.setData(data);
+
     return resultToGroups(movies.data);
+  },
+
+  async addNewWatched(movieSelected) {
+    // repository.setData();
   },
 };
