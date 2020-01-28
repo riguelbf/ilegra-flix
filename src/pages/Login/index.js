@@ -20,7 +20,7 @@ export default function Login() {
   }
 
   function handleLogin(userName = '') {
-    history.push(`/?user=${userName}`);
+    history.push(`/home/?user=${userName}`);
   }
 
   useEffect(() => {

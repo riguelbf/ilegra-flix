@@ -44,7 +44,7 @@ export const Container = styled.div`
 
 
    .title {
-      font-size: 4rem;
+      font-size: 2rem;
    }
 
    .rating {
@@ -54,7 +54,7 @@ export const Container = styled.div`
 
    .info {
       padding-top: 1.6rem;
-      font-size: 2rem;
+      font-size: 1rem;
 
       @include responsive(phone) {
          padding-top: 1.2rem;
@@ -69,7 +69,7 @@ export const Container = styled.div`
    .overview {
       color: $color-modal-grey-2;
       padding-top: 2rem;
-      font-size: 2rem;
+      font-size: 1rem;
       hyphens: auto;
       width: 60%;
       line-height: 1.2;
@@ -91,6 +91,8 @@ export const Container = styled.div`
          padding-top: 1rem;
          font-size: 1.7rem;
       }
+
+
    }
 
    button {
@@ -133,6 +135,10 @@ export const Container = styled.div`
       }
    }
 
+   button.btn-close {
+        background-color: #302e2e;
+      }
+
 &.show {
    transition: .5s .3s ease-out;
    top: 25%;
@@ -142,8 +148,10 @@ export const Container = styled.div`
    width: 65rem;
    height: 26.5rem;
    border: solid 1px green;
-   box-shadow: 0 1.5rem 4rem rgba($color-dark, 0.15);
-   background-size: cover; background-image: url("https://image.tmdb.org/t/p/original//61m8HGEWwE4q8oSz3AY5vl5F3BS.jpg");
+   background-size: cover;
+   background-image: ${props =>
+     `url(https://image.tmdb.org/t/p/original//${props.backdropPath})`};
+  box-shadow: 0 1.5rem 4rem rgba($color-dark, 0.15);
 }
 
 &.hide {

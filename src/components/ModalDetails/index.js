@@ -5,27 +5,18 @@ import { FaPlay, FaPlus } from 'react-icons/fa';
 import { Container } from './styles';
 
 function ModalDetails(props) {
-  const { movie, className } = props;
+  const { movieSelected, className, handleClose } = props;
 
   return (
-    <Container>
+    <Container backdropPath={movieSelected.backdrop_path}>
       <div className={`container ${className}`}>
-        <h1 className="title">{movie.title || movie.name}</h1>
+        <h1 className="title">{movieSelected.title || movieSelected.name}</h1>
         <p className="info">
-          <span className="rating">Rating: {movie.vote_average * 10}%</span>
-          Release date: {movie.release_date ||
-            movie.first_air_date} Runtime:{' '}
-          {movie.runtime || movie.episode_run_time}m
+          <p className="rating">Rating: {movieSelected.vote_average * 10}%</p>
+          <p>Release date: </p>
+          <p>Popularity: {movieSelected.popularity}</p>
         </p>
-        {/* <p className="episode">
-          {movie.number_of_episodes
-            ? ` Episodes: ${movie.number_of_episodes}`
-            : ''}
-          {movie.number_of_seasons
-            ? ` Seasons: ${movie.number_of_seasons}`
-            : ''}
-        </p> */}
-        <p className="overview">{movie.overview}</p>
+        <p className="overview">{movieSelected.overview}</p>
         <button className="btn-red">
           <FaPlay className="btn--icon" />
           <span>Play</span>
@@ -34,15 +25,18 @@ function ModalDetails(props) {
           <FaPlus className="btn--icon" />
           <span>ADD My List</span>
         </button>
+        <button className="btn-close" onClick={() => handleClose()}>
+          Close
+        </button>
       </div>
     </Container>
   );
 }
 
 ModalDetails.defaultProps = {
-  movie: {
-    title: 'Movie title',
-    name: 'Movie name',
+  movieSelected: {
+    title: 'movieSelected title',
+    name: 'movieSelected name',
     release_date: 'Release date',
     first_air_date: 'First date',
     overview: 'Overview',
@@ -51,7 +45,7 @@ ModalDetails.defaultProps = {
 };
 
 ModalDetails.propTypes = {
-  movie: PropType.shape({
+  movieSelected: PropType.shape({
     title: PropType.string.isRequired,
     name: PropType.string,
     release_date: PropType.string,

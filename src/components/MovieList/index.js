@@ -22,7 +22,7 @@ function MovieList(props) {
                 <MovieItem
                   key={index}
                   movieDetail={movie}
-                  onShowModal={onShowModal}
+                  onShowModal={() => onShowModal(movie)}
                 />
               );
             })}
