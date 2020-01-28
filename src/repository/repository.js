@@ -1,5 +1,3 @@
-import { MovieService } from '../service/movieService';
-
 export const LOCAL_STORAGE_KEY = 'ilegra-flix-storage';
 
 async function saveOnLocalStorage(data, key = LOCAL_STORAGE_KEY) {
@@ -12,17 +10,13 @@ async function getFromLocalStorage() {
 }
 
 export const repository = {
-  async load() {
-    const movieList = await MovieService.getMovies();
-    saveOnLocalStorage(movieList);
-  },
-
   async setData(data, key) {
     await saveOnLocalStorage(data, key);
   },
 
   async getData() {
     const data = await getFromLocalStorage();
+    debugger;
     return data === null ? {} : data;
   },
 };

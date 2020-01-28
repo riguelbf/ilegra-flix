@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Container, ProfileDetails } from './styles';
 import { MdPortrait } from 'react-icons/md';
-import NavBar from "../../components/NavBar";
+import { Container, ProfileDetails } from './styles';
+import NavBar from '../NavBar';
 
 import logo from '../../assets/images/logo.png';
+import { userService } from '../../service/userService';
 
 export default function Header() {
+  const [currentUser, setcurrentUser] = useState({
+    name: '',
+    watchedMovies: [],
+  });
+
+  async function handleCurrentUser() {
+    const user = await userService.getCurrentUser();
+    setcurrentUser(user);
+  }
+
+  useEffect(() => {
+    handleCurrentUser();
+  }, []);
+
   return (
     <Container>
       <Link to="/">
@@ -17,8 +32,8 @@ export default function Header() {
       <ProfileDetails data-testid="profile-details" to="/profile">
         <MdPortrait size={50} color="#ed2337" />
         <div>
-          <span>User name</span>
-          <span>2 items já assistidos</span>
+          <span>{currentUser.name}</span>
+          <span>{`${0} items já assistidos`}</span>
         </div>
       </ProfileDetails>
     </Container>

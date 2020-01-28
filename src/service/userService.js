@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { repository } from '../repository/repository';
 
 export const userService = {
@@ -28,5 +27,9 @@ export const userService = {
     data.currentUser = currentUser;
 
     repository.setData(data);
+  },
+  async getCurrentUser() {
+    const currentUser = (await repository.getData().currentUser) || {};
+    return currentUser;
   },
 };

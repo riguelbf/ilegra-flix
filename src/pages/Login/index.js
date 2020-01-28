@@ -16,7 +16,7 @@ export default function Login() {
 
   async function handleAddUser() {
     const newUser = faker.name.findName();
-    setUsers([...users, newUser]);
+    setUsers([...users, { name: newUser, watchedMovies: [] }]);
   }
 
   function handleLogin(userName = '') {
@@ -25,7 +25,7 @@ export default function Login() {
 
   useEffect(() => {
     getUsers();
-  });
+  }, []);
 
   return (
     <UserList
