@@ -33,7 +33,7 @@ export default function Header() {
       <ProfileDetails data-testid="profile-details" to="/profile">
         <MdPortrait size={50} color="#ed2337" />
         <div>
-          <span>{currentUser.currentUser.name || 'User not found'}</span>
+          <span>{currentUser.name || 'User not found'}</span>
           <span>{`${0} items já assistidos`}</span>
         </div>
       </ProfileDetails>
