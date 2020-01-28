@@ -18,7 +18,7 @@ describe('Movie repository', () => {
       )
       .reply(200, all);
 
-    await repository.load();
+    await repository.setData(all);
 
     expect(localStorage.setItem).toHaveBeenCalled();
   });
