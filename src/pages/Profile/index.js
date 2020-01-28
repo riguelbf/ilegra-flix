@@ -4,12 +4,14 @@ import { Container } from './styles';
 import { userService } from '../../service/userService';
 
 export default function Profile() {
-  const [userData, setUserData] = useState({});
+  const [userData, setUserData] = useState({
+    movies: { data: { results: [] } },
+  });
 
   async function handleCurrentUser() {
-    const currentUser = await userService.getCurrentUser();
-    debugger;
-    setUserData(currentUser);
+    await userService.getCurrentUser().then(currentUser => {
+      setUserData(currentUser);
+    });
   }
 
   useEffect(() => {
@@ -23,47 +25,28 @@ export default function Profile() {
         <img
           className="avatar"
           src="http://www.conpra.cradf.org.br/images/no-user.png"
-          alt="Ash"
+          alt="User image"
         />
-        <div className="username">{userData.name || 'Not found'}</div>
+        <div className="username">
+          {(userData.currentUser && userData.currentUser.name) || 'Not found'}
+        </div>
         <div className="line">
-          <span>Already watched by type</span>
+          <br />
+          <span>List of movies watched</span>
         </div>
         <ul className="data">
-          <li>
-            <span className="entypo-heart">{`Action movies: ${127}`}</span>
-          </li>
-          <li>
-            <span className="entypo-eye">{`Documentary movies: ${127}`}3</span>
-          </li>
-          <li>
-            <span className="entypo-user">{`Tv Show: ${127}`}</span>
-          </li>
-          <li>
-            <span className="entypo-user">{`Tv Show: ${127}`}</span>
-          </li>
-          <li>
-            <span className="entypo-user">{`Tv Show: ${127}`}</span>
-          </li>
-          <li>
-            <span className="entypo-user">{`Tv Show: ${127}`}</span>
-          </li>
-          <li>
-            <span className="entypo-user">{`Tv Show: ${127}`}</span>
-          </li>
-          <li>
-            <span className="entypo-user">{`Tv Show: ${127}`}</span>
-          </li>
+          {/* {(userData.movies.data &&
+            userData.movies.data.results(user => (
+              <li>
+                <span className="entypo-heart">{`Title: ${user.title} Votes: ${user.vote_count}`}</span>
+              </li>
+            ))) || (
+            <li>
+              <span className="entypo-heart">No movies watched yet</span>
+            </li>
+          )} */}
         </ul>
       </div>
-      {/* <footer>
-        <h1>
-          inspired by
-          <a href="https://dribbble.com/shots/1033074-User-Profile">
-            <span className="entypo-dribbble" /> shot
-          </a>
-        </h1>
-      </footer> */}
     </Container>
   );
 }

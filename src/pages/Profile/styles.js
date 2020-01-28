@@ -82,9 +82,6 @@ export const Container = styled.div`
     font-size: 1.27em;
     font-weight: bold;
   }
-  .user-profile span:hover {
-    color: #daebea;
-  }
 
   footer > h1 {
     display: block;

@@ -29,7 +29,8 @@ export const userService = {
     repository.setData(data);
   },
   async getCurrentUser() {
-    const currentUser = (await repository.getData().currentUser) || {};
-    return currentUser;
+    return repository.getData().then(currentUser => {
+      return currentUser || {};
+    });
   },
 };

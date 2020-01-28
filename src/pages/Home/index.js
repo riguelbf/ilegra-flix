@@ -1,14 +1,11 @@
 import React, { useState, useLayoutEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 import { Container } from './styles';
 import ModalDetails from '../../components/ModalDetails';
 import MovieList from '../../components/MovieList';
 import { MovieService } from '../../service/movieService';
-import { userService } from '../../service/userService';
 
 export default function Home() {
-  const location = useLocation();
   const [movies, setMovies] = useState({});
   const [movieSelected, setMovieSelected] = useState({});
   const [className, setClassName] = useState('hide');
@@ -18,12 +15,8 @@ export default function Home() {
     await setMovies(moviesResult);
   }
 
-  async function handleCurrentUser() {
-    await userService.setCurrentUser(location.search);
-  }
   useLayoutEffect(() => {
     fetchGroups();
-    handleCurrentUser();
   }, []);
 
   async function handleModal(movieSelected) {

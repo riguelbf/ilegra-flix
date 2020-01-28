@@ -10,13 +10,14 @@ import { userService } from '../../service/userService';
 
 export default function Header() {
   const [currentUser, setcurrentUser] = useState({
-    name: '',
+    currentUser: {
+      name: '',
+    },
     watchedMovies: [],
   });
 
   async function handleCurrentUser() {
-    const user = await userService.getCurrentUser();
-    setcurrentUser(user);
+    await userService.getCurrentUser().then(user => setcurrentUser(user));
   }
 
   useEffect(() => {
@@ -32,7 +33,7 @@ export default function Header() {
       <ProfileDetails data-testid="profile-details" to="/profile">
         <MdPortrait size={50} color="#ed2337" />
         <div>
-          <span>{currentUser.name}</span>
+          <span>{currentUser.currentUser.name || 'User not found'}</span>
           <span>{`${0} items já assistidos`}</span>
         </div>
       </ProfileDetails>

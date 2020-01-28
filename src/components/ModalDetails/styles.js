@@ -4,14 +4,14 @@ export const Container = styled.div`
   position: fixed;
   z-index: 500;
   width: 0%;
-  height: 52rem;
+  height: 70rem;
   top: 20%;
   left: 20%;
   color: #fff;
   box-shadow: 0 1.5rem 4rem rgba($color-dark, 0.15);
 
   @include responsive(tab_port) {
-    height: 38rem;
+    height: 50rem;
   }
   @include responsive(phone) {
     height: 50rem;
@@ -91,8 +91,6 @@ export const Container = styled.div`
          padding-top: 1rem;
          font-size: 1.7rem;
       }
-
-
    }
 
    button {
@@ -146,12 +144,14 @@ export const Container = styled.div`
    visibility: visible;
    opacity: 1;
    width: 65rem;
-   height: 26.5rem;
+   height: 30.5rem;
    border: solid 1px green;
    background-size: cover;
    background-image: ${props =>
      `url(https://image.tmdb.org/t/p/original//${props.backdropPath})`};
-  box-shadow: 0 1.5rem 4rem rgba($color-dark, 0.15);
+  -moz-box-shadow: 0 0 5px 5px #888;
+-webkit-box-shadow: 0 0 5px 5px#888;
+box-shadow: 0 0 150px 150px #000;
 }
 
 &.hide {
