@@ -23,6 +23,6 @@ export const repository = {
 
   async getData() {
     const data = await getFromLocalStorage();
-    return data;
+    return data === null ? {} : data;
   },
 };

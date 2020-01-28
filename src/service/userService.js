@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { repository } from '../repository/repository';
 
 export const userService = {
@@ -17,9 +18,15 @@ export const userService = {
     return users;
   },
   async setCurrentUser(userOnSearch) {
+    const data = await repository.getData();
     const userName = userOnSearch.substr(6, userOnSearch.length);
-    const data = (await repository.getData()) || {};
-    data.currentUser = userName;
+    const users = data.users || [];
+    const currentUser = users.find(user => user.name === userName) || {
+      name: userName,
+      watchedMovies: [],
+    };
+    data.currentUser = currentUser;
+
     repository.setData(data);
   },
 };

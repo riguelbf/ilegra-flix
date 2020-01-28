@@ -45,6 +45,8 @@ export const MovieService = {
   },
 
   async addNewWatched(movieSelected) {
-    // repository.setData();
+    const data = await repository.getData();
+    data.currentUser.watchedMovies.push(movieSelected);
+    repository.setData(data);
   },
 };
